@@ -45,3 +45,4 @@ https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/refs/tags/3.1.13
 * Renomear a pasta fornecida pelo CodeIgniter 3 para `loja`.
 * Mover a pasta para `xampp -> htdocs`.
 * Abrir a pasta com os arquivos no Visual Studio Code.
+* Criar um login para o usuário no MySQL 'SELECT * FROM loja.usuario' -> adicionar 'email' e 'senha' -> Apply.
