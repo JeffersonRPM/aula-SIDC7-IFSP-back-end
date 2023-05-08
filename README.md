@@ -23,6 +23,7 @@ CREATE TABLE `usuario` (
   `nome` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `email` varchar(100) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `senha` char(40) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
+	`status` char(1) COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   `data_cad` datetime DEFAULT NULL,
   `data_alt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
