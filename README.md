@@ -47,3 +47,9 @@ https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/refs/tags/3.1.13
 * Mover a pasta para `xampp -> htdocs`.
 * Abrir a pasta com os arquivos no Visual Studio Code.
 * Criar um login para o usuário no MySQL `SELECT * FROM loja.usuario` -> adicionar `email` e `senha` -> `Apply`.
+
+# Configurações de compatibilidade
+
+* Instalar o `xampp` com a versão do `php 5.6`
+* Instalar `MySQL 5.7`
+* Configurar senha do banco: `application` -> `config` -> `database.php` -> `password => 'senha do MySQL aqui'`
