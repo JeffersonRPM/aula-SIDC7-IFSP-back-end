@@ -51,5 +51,5 @@ https://api.github.com/repos/bcit-ci/CodeIgniter/zipball/refs/tags/3.1.13
 # Configurações de compatibilidade
 
 * Instalar o `xampp` com a versão do `php 5.6`
-* Instalar `MySQL 5.7`
+* Instalar o `MySQL 5.7`
 * Configurar senha do banco: `application` -> `config` -> `database.php` -> `password => 'senha do MySQL aqui'`
