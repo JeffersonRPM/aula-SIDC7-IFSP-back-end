@@ -9,11 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 	exit;
 }
 
-class Categoria extends CI_Controller {
+class Produto extends CI_Controller{
 	public function __construct() {
 		parent::__construct();
 
-		$this->load->model("categoriamodel");
+		$this->load->model("produtomodel");
 	}
 
 	public function adicionar() 
@@ -33,12 +33,17 @@ class Categoria extends CI_Controller {
 		} else {
 			$e = (object)[];
 			$e->nome = $p->nome;
+			$e->descricao = $p->descricao;
 			$e->status = $p->status;
+			$e->id_categoria = $p->id_categoria;
+			$e->valor_compra = $p->valor_compra;
+			$e->valor_venda = $p->valor_venda;
+			$e->estoque = $p->estoque;
 			
 			if (!isset($p->id)) {
 				$e->data_cad = date("Y-m-d H:i:s");
 
-				$this->categoriamodel->inserir($e);
+				$this->produtomodel->inserir($e);
 
 				$rps = array(
 					'status' => true,
@@ -48,7 +53,7 @@ class Categoria extends CI_Controller {
 				$e->data_alt = date("Y-m-d H:i:s");
 				$id = $p->id;
 
-				$this->categoriamodel->alterar($id, $e);
+				$this->produtomodel->alterar($id, $e);
 
 				$rps = array(
 					'status' => true,
@@ -61,7 +66,7 @@ class Categoria extends CI_Controller {
 
 	public function listar() {
 		
-		$cat = $this->categoriamodel->listar();
+		$cat = $this->produtomodel->listar();
 
 		$data = array();
 
@@ -85,22 +90,12 @@ class Categoria extends CI_Controller {
 	public function excluir() {
 		$id = $this->input->post('id');
 
-		$this->categoriamodel->excluir($id);
+		$this->produtomodel->excluir($id);
 
 		echo json_encode([
 			'status' => true,
 			'mensagem' => "Exclusão realizada com sucesso."
 		]); 
-	}
-
-	public function listarcategoria() {
-		$data = $this->categoriamodel->listarcategoria();
-
-		$rps = array(
-			'status' => true,
-			'obj' => $data
-		); 
-		echo json_encode($rps);
 	}
 
 }

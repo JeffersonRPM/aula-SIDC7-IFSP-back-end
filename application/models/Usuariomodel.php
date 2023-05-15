@@ -24,4 +24,13 @@ class Usuariomodel extends CI_Model {
         $this->db->where('id', $id);
     }
 
+    public function listar() {
+        $this->db->from('usuario');
+        $this->db->order_by('nome', 'asc');
+
+        $query = $this->db->get();
+        $res = $query->result();
+        return $res;
+    }
+
 }
