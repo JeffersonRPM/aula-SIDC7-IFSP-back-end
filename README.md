@@ -16,7 +16,7 @@ https://www.apachefriends.org/pt_br/download.html
 
 ![image](https://user-images.githubusercontent.com/48998618/225986951-7f12d3fb-e1e2-48df-92ec-8cf6b69955a4.png)
 
-* Criar as tabelas: `usuario` e `categoria` no banco de dados.
+* Criar as tabelas: `usuario`,`categoria` e `produto` no banco de dados.
 ```
 CREATE TABLE `usuario` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -37,6 +37,22 @@ CREATE TABLE `categoria` (
   `data_cad` datetime DEFAULT NULL,
   `data_alt` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
+```
+```
+CREATE TABLE `produto` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `nome` varchar(50) DEFAULT NULL,
+  `descricao` text,
+  `status` char(1) DEFAULT NULL,
+  `data_cad` datetime DEFAULT NULL,
+  `data_alt` datetime DEFAULT NULL,
+  `id_categoria` int DEFAULT NULL,
+  `valor_compra` decimal(18,2) DEFAULT NULL,
+  `valor_venda` decimal(18,2) DEFAULT NULL,
+  `estoque` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_produto_categoria` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id`) ON DELETE SET NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 ```
 * Fazer download do `CodeIgniter 3`.
