@@ -98,4 +98,33 @@ class Produto extends CI_Controller{
 		]); 
 	}
 
+	public function filtrar() {
+		$pesq = [];
+
+		if ($this->input->post('nome') != '')
+			$pesq['nome'] = $this->input->post("nome");
+		
+		if ($this->input->post('status') != '')
+		$pesq['status'] = $this->input->post("status");
+
+		if ($this->input->post('id_categoria') != '')
+		$pesq['id_categoria'] = $this->input->post("id_categoria");
+
+		$data = $this->produtomodel->filtrar($pesq);
+
+		if (count($data) > 0) {
+			$rps = array (
+				'status' => true,
+				'obj' => $data
+			);
+		} else {
+			$rps = array(
+				'status' => false,
+				'erro' => 'Não foi encontrado nenhum registro que satisfaça ao filtro.'
+			);
+		}
+		echo json_encode($rps);
+	}
+
+
 }

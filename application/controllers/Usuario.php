@@ -89,4 +89,41 @@ class Usuario extends CI_Controller {
 
 		echo json_encode($rps);
 	}
+
+	public function excluir() {
+		$id = $this->input->post('id');
+
+		$this->usuariomodel->excluir($id);
+
+		echo json_encode([
+			'status' => true,
+			'mensagem' => "Exclusão realizada com sucesso."
+		]); 
+	}
+
+	public function filtrar() {
+		$pesq = [];
+
+		if ($this->input->post('nome') != '')
+			$pesq['nome'] = $this->input->post("nome");
+		
+		if ($this->input->post('status') != '')
+		$pesq['status'] = $this->input->post("status");
+
+		$data = $this->usuariomodel->filtrar($pesq);
+
+		if (count($data) > 0) {
+			$rps = array (
+				'status' => true,
+				'obj' => $data
+			);
+		} else {
+			$rps = array(
+				'status' => false,
+				'erro' => 'Não foi encontrado nenhum registro que satisfaça ao filtro.'
+			);
+		}
+		echo json_encode($rps);
+	}
+
 }
