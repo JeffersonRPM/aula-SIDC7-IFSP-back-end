@@ -39,4 +39,19 @@ class Categoriamodel extends CI_Model {
         return $res;
     }
 
+    public function filtrar($array) {
+        $this->db->from('categoria');
+
+        foreach($array as $item => $value) {
+            if ($item == 'nome') 
+                $this->db->like($item, $value, 'both');
+            else
+                $this->db->where($item, $value);
+        }
+
+        $this->db->order_by('nome'); 
+        $query = $this->db->get();
+        $res = $query->result();
+        return $res;
+    }
 }
